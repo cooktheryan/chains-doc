@@ -1,0 +1,83 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-pipeline
+spec:
+  tasks:
+  - name: git-clone
+    params:
+    - name: url
+      value: https://github.com/cooktheryan/chains-doc.git
+    - name: revision
+      value: main
+    - name: submodules
+      value: "true"
+    - name: depth
+      value: "1"
+    - name: sslVerify
+      value: "true"
+    - name: deleteExisting
+      value: "true"
+    - name: verbose
+      value: "true"
+    - name: gitInitImage
+      value: registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:da1aedf0b17f2b9dd2a46edc93ff1c0582989414b902a28cd79bad8a035c9ea4
+    - name: userHome
+      value: /tekton/home
+    taskRef:
+      kind: ClusterTask
+      name: git-clone
+    workspaces:
+    - name: output
+      workspace: build
+  - name: buildah
+    params:
+    - name: IMAGE
+      value: docker.io/cooktheryan/web
+    - name: BUILDER_IMAGE
+      value: registry.redhat.io/rhel8/buildah@sha256:99cae35f40c7ec050fed3765b2b27e0b8bbea2aa2da7c16408e2ca13c60ff8ee
+    - name: STORAGE_DRIVER
+      value: vfs
+    - name: DOCKERFILE
+      value: app/Dockerfile
+    - name: CONTEXT
+      value: app/
+    - name: TAG
+      value: $(tasks.git-clone.results.commit)
+    - name: TLSVERIFY
+      value: "true"
+    - name: FORMAT
+      value: oci
+    runAfter:
+    - git-clone
+    taskRef:
+      kind: Task
+      name: buildah-commit-tag
+    workspaces:
+    - name: source
+      workspace: build
+  - name: image-updater
+    params:
+    - name: driver
+      value: github
+    - name: file-path
+      value: kubernetes-objects/deployment.yaml
+    - name: image-repo
+      value: docker.io
+    - name: new-image-url
+      value: docker.io/cooktheryan/web:$(tasks.git-clone.results.commit)
+    - name: source-branch
+      value: main
+    - name: source-repo
+      value: cooktheryan/chains-doc
+    - name: update-key
+      value: spec.template.spec.containers.0.image
+    - name: insecure
+      value: "false"
+    runAfter:
+    - buildah
+    taskRef:
+      kind: Task
+      name: image-updater
+  workspaces:
+  - name: build
