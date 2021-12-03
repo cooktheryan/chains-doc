@@ -1,0 +1,21 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    app: web
+  name: web
+  namespace: web
+spec:
+  host: web-web.apps.auto.octo-emerging.redhataicoe.com
+  port:
+    targetPort: 8443
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: passthrough
+  to:
+    kind: Service
+    name: web
+    weight: 100
+  wildcardPolicy: None

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: web
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: web
+    spec:
+      containers:
+      - image: docker.io/cooktheryan/web:f554baba61d266f1a1c678cce1fd225bf690b88a
+        name: web
+        ports:
+        - containerPort: 8443
+        resources: {}
+status: {}
