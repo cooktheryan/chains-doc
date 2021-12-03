@@ -1,2 +1,2 @@
-secret*
-*secrets*
+kubernetes-objects/docker-registry.yaml
+kubernetes-objects/image-updater.yaml
