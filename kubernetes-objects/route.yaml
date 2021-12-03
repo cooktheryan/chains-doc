@@ -8,7 +8,6 @@ metadata:
   name: web
   namespace: web
 spec:
-  host: web-web.apps.auto.octo-emerging.redhataicoe.com
   port:
     targetPort: 8443
   tls:
