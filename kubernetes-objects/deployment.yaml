@@ -18,7 +18,7 @@ spec:
         app: web
     spec:
       containers:
-      - image: docker.io/cooktheryan/web:62e86f37f86ac6de5958db3b6908f4de8e74dc7b
+      - image: docker.io/cooktheryan/web:085d01ab9bef75e1447ecad1159c86c441bd7946
         name: web
         ports:
         - containerPort: 8443
