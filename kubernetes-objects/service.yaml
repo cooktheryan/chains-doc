@@ -6,6 +6,7 @@ metadata:
     app: web
   name: web
 spec:
+  type: NodePort
   ports:
   - port: 8443
     protocol: TCP
