@@ -10,7 +10,6 @@ spec:
   - port: 8443
     protocol: TCP
     targetPort: 8443
+    nodePort: 30007
   selector:
     app: web
-status:
-  loadBalancer: {}
