@@ -1,0 +1,31 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  annotations:
+    apps.open-cluster-management.io/reconcile-rate: medium
+    open-cluster-management.io/user-group: c3lzdGVtOmNsdXN0ZXItYWRtaW5zLHN5c3RlbTphdXRoZW50aWNhdGVk
+    open-cluster-management.io/user-identity: a3ViZTphZG1pbg==
+  creationTimestamp: "2021-12-06T18:51:38Z"
+  generation: 1
+  managedFields:
+  - apiVersion: apps.open-cluster-management.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:apps.open-cluster-management.io/reconcile-rate: {}
+      f:spec:
+        .: {}
+        f:pathname: {}
+        f:type: {}
+    manager: unknown
+    operation: Update
+    time: "2021-12-06T18:51:38Z"
+  name: gcooktheryan-chains-doc
+  namespace: gcooktheryan-chains-doc-ns
+  resourceVersion: "457302"
+  uid: 907232cf-acca-4a7a-b4db-8b1a1d3170ca
+spec:
+  pathname: https://cooktheryan/chains-doc
+  type: Git

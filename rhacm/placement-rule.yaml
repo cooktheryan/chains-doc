@@ -1,0 +1,48 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  creationTimestamp: "2021-12-06T18:51:38Z"
+  generation: 1
+  labels:
+    app: website
+  managedFields:
+  - apiVersion: apps.open-cluster-management.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:decisions: {}
+    manager: multicluster-operators-placementrule
+    operation: Update
+    time: "2021-12-06T18:51:38Z"
+  - apiVersion: apps.open-cluster-management.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        .: {}
+        f:clusterSelector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:type: {}
+    manager: unknown
+    operation: Update
+    time: "2021-12-06T18:51:38Z"
+  name: website-placement-1
+  namespace: website
+  resourceVersion: "459502"
+  uid: 93bb6f29-858b-4bbd-8b3f-2485a2e08b1e
+spec:
+  clusterSelector:
+    matchLabels:
+      type: microshift
+status:
+  decisions:
+  - clusterName: vegeta
+    clusterNamespace: vegeta
+  - clusterName: freeza
+    clusterNamespace: freeza

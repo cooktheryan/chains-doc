@@ -1,0 +1,49 @@
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  annotations:
+    apps.open-cluster-management.io/deployables: ""
+    apps.open-cluster-management.io/subscriptions: website/website-subscription-1
+    open-cluster-management.io/user-group: c3lzdGVtOnNlcnZpY2VhY2NvdW50cyxzeXN0ZW06c2VydmljZWFjY291bnRzOm9wZW4tY2x1c3Rlci1tYW5hZ2VtZW50LHN5c3RlbTphdXRoZW50aWNhdGVk
+    open-cluster-management.io/user-identity: c3lzdGVtOnNlcnZpY2VhY2NvdW50Om9wZW4tY2x1c3Rlci1tYW5hZ2VtZW50Om11bHRpY2x1c3Rlci1vcGVyYXRvcnM=
+  creationTimestamp: "2021-12-06T18:51:38Z"
+  generation: 1
+  managedFields:
+  - apiVersion: app.k8s.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        .: {}
+        f:componentKinds: {}
+        f:descriptor: {}
+        f:selector:
+          .: {}
+          f:matchExpressions: {}
+    manager: unknown
+    operation: Update
+    time: "2021-12-06T18:51:38Z"
+  - apiVersion: app.k8s.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:apps.open-cluster-management.io/deployables: {}
+          f:apps.open-cluster-management.io/subscriptions: {}
+    manager: multicluster-operators-application
+    operation: Update
+    time: "2021-12-06T18:51:40Z"
+  name: website
+  namespace: website
+  resourceVersion: "457416"
+  uid: b1b97423-aa72-48bb-8584-12c41863f34c
+spec:
+  componentKinds:
+  - group: apps.open-cluster-management.io
+    kind: Subscription
+  descriptor: {}
+  selector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - website

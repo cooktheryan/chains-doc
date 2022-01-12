@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    openshift.io/description: ""
+    openshift.io/display-name: ""
+    openshift.io/requester: kube:admin
+    openshift.io/sa.scc.mcs: s0:c28,c17
+    openshift.io/sa.scc.supplemental-groups: 1000790000/10000
+    openshift.io/sa.scc.uid-range: 1000790000/10000
+  creationTimestamp: "2021-12-06T18:51:37Z"
+  labels:
+    kubernetes.io/metadata.name: gcooktheryan-chains-doc-ns
+    openshift-pipelines.tekton.dev/namespace-reconcile-version: v1.5
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:openshift.io/sa.scc.mcs: {}
+          f:openshift.io/sa.scc.supplemental-groups: {}
+          f:openshift.io/sa.scc.uid-range: {}
+    manager: cluster-policy-controller
+    operation: Update
+    time: "2021-12-06T18:51:37Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:openshift.io/description: {}
+          f:openshift.io/display-name: {}
+          f:openshift.io/requester: {}
+        f:labels:
+          .: {}
+          f:kubernetes.io/metadata.name: {}
+    manager: openshift-apiserver
+    operation: Update
+    time: "2021-12-06T18:51:37Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:finalizers: {}
+    manager: openshift-controller-manager
+    operation: Update
+    time: "2021-12-06T18:51:37Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          f:openshift-pipelines.tekton.dev/namespace-reconcile-version: {}
+    manager: openshift-pipelines-operator
+    operation: Update
+    time: "2021-12-06T18:51:38Z"
+  name: gcooktheryan-chains-doc-ns
+  resourceVersion: "457351"
+  uid: 895b1bed-0671-4c75-99ca-fc0871016548
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active
