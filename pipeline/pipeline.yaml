@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: build-pipeline
+  name: build-pipeline-2
 spec:
   tasks:
   - name: git-clone
@@ -56,28 +56,5 @@ spec:
     workspaces:
     - name: source
       workspace: build
-  - name: image-updater
-    params:
-    - name: driver
-      value: github
-    - name: file-path
-      value: kubernetes-objects/deployment.yaml
-    - name: image-repo
-      value: docker.io
-    - name: new-image-url
-      value: docker.io/cooktheryan/web:$(tasks.git-clone.results.commit)
-    - name: source-branch
-      value: main
-    - name: source-repo
-      value: cooktheryan/chains-doc
-    - name: update-key
-      value: spec.template.spec.containers.0.image
-    - name: insecure
-      value: "false"
-    runAfter:
-    - buildah
-    taskRef:
-      kind: Task
-      name: image-updater
   workspaces:
   - name: build

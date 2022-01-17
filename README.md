@@ -9,6 +9,7 @@ Once you have OpenShift pipelines deployed deploy Tekton Chains.
 
 ```
 kubectl apply --filename https://storage.googleapis.com/tekton-releases/chains/latest/release.yaml
+kubectl patch configmap chains-config -n tekton-chains -p='{"data":{"artifacts.oci.storage": "tekton"}}'
 ```
 
 Using Cosign generate a secret.
