@@ -23,13 +23,9 @@
 
 // Launch aws instance using ami-007cf291af489ad4d then connect to it using ssh and install podman
 resource "aws_instance" "rcook" {
-  ami           = "ami-007cf291af489ad4d"
+  ami           = "ami-0ec3e8275c99247ac"
   instance_type = "t4g.medium"
   key_name      = aws_key_pair.generated_key.key_name
-  user_data     = <<-EOF
-                  #!/bin/bash
-                  sudo yum install podman -y
-                  EOF
   provisioner "remote-exec" {
     inline = [
       "sudo cloud-init status --wait",
