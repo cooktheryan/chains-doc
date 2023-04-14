@@ -32,7 +32,10 @@ resource "aws_instance" "rcook" {
                   EOF
   provisioner "remote-exec" {
     inline = [
+      "sudo cloud-init status --wait",
       "echo 'Connection Established'",
+      "systemctl start podman.socket --user",
+      "sudo loginctl enable-linger ec2-user",
     ]
   }
  connection {
